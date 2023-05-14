@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link href="/image/logo2.jpg" rel="icon">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/cart.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h2>Корзина товаров</h2>
+<div class="result">
+<div class="card" th:each="product : ${cart_product}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="100px">
+    <br>
+    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}"><i class="fa fa-times" aria-hidden="true"></i> Удалить</a>
+    <hr>
+</div>
+</div>
+<h3 th:text="'Итоговая цена: ' + ${price}"></h3>
+<div class="registration">
+<a href="/order/create">Оформить заказ</a>
+</div>
+</body>
+</html>

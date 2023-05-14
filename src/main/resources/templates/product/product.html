@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог украшений</title>
+    <link href="/image/logo2.jpg" rel="icon">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="main">
+<div class="contain">
+    <div class="header">
+            <div style="width: 85%; padding-left: 190px">
+                <h1>Silver Sky Jewelry</h1>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                <a th:href="@{/authentication}">Вход<br>в личный кабинет</a>
+            </div>
+    </div>
+    <h2>Авторские украшения из серебра</h2>
+
+
+    <nav class="nav">
+        <ul class="menu">
+
+            <li><a href="#">Украшения</a>
+                <ul>
+                    <li><a href="#">Серьги</a></li><br>
+                    <li><a href="#">Браслеты</a></li><br>
+                    <li><a href="#">Кольца</a></li><br>
+                    <li><a href="#">Подвески</a></li><br>
+                </ul>
+            </li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Наши магазины</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Сертификаты</a></li>
+
+        </ul>
+    </nav>
+
+<form th:method="POST" th:action="@{/product/search}">
+    <fieldset>
+        <legend>Выберите параметры для поиска:</legend>
+        <label for="search">Поиск по наименованию</label>
+        <input type="text" id="search" name="search" th:value="*{value_search}">
+        <br>
+        <p>Цена, P</p>
+        <label for="ot">От</label>
+        <input type="text" name="ot" id="ot" th:value="*{value_price_ot}">
+        <label for="do">До</label>
+        <input type="text" name="do" id="do" th:value="*{value_price_do}">
+        <br>
+        <br>
+        <div>
+            <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+            <label for="ascending_price">Отсортировать по возрастанию цены</label>
+            <input type="radio" id="descending_price" name="price"
+                   value="sorted_by_descending_price">
+            <label for="descending_price">Отсортировать по убыванию цены</label>
+            <p>Категория товаров: </p>
+            <input type="radio" id="furniture" name="contract" value="furniture">
+            <label for="furniture">Серьги</label>
+            <input type="radio" id="appliances" name="contract" value="appliances">
+            <label for="appliances">Браслеты</label>
+            <input type="radio" id="clothes" name="contract" value="clothes">
+            <label for="clothes">Кольца</label>
+            <br>
+            <br>
+            <input type="submit" value="Найти">
+        </div>
+    </fieldset>
+</form>
+</div>
+<hr>
+
+<h3>Результат поиска</h3>
+<div class="result">
+<div class="card" th:each="product : ${search_product}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="200px" height="266.66px">
+    <br>
+    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <hr>
+</div>
+</div>
+<hr>
+<h3>Каталог украшений: </h3>
+<div class="catalog">
+        <div class="card" th:each="product : ${products}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="200px" height="266.66px">
+    <br>
+    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <hr>
+        </div>
+</div>
+</div>
+</body>
+</html>

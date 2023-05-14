@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+
+}
+body{
+    background-image: url("sea.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 50px;
+}
+.result{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 20px;
+    margin: 30px;
+}
+.card{
+    border: #605c5c solid 1px;
+    box-shadow: grey 10px 10px 10px;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+}
+.card a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.span{
+    font-weight: 800;
+}
