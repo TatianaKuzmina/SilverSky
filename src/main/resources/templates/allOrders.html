@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр заказов пользователей</title>
+    <link href="/image/logo2.jpg" rel="icon">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/allOrders.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h3>Поиск заказов</h3>
+<form th:method="POST" th:action="@{/allOrders/search}">
+    <label for="search">Поиск по последним 4-м символам номера заказа</label>
+    <input type="text" id="search" name="search" th:value="*{value_search}" width="200px" maxlength="4">
+    <input type="submit" value="Искать">
+    <br>
+</form>
+<hr>
+<h3>Результат поиска:</h3>
+<div th:each="order: ${search_order}">
+    <a th:href="@{/allOrders/{id}(id=${order.getId()})}" th:text="${order.getNumber()}"></a>
+    <p th:text="'Состав заказа: ' + ${order.getProduct().getTitle()}"></p>
+    <hr>
+</div>
+
+<hr>
+<br>
+<h3>Список всех заказов заказов</h3>
+<hr style="width: 50%; float: left;">
+<br>
+<div th:each="order : ${orders}">
+    <a th:href="@{/allOrders/{id}(id=${order.getId()})}" th:text="'Номер заказа: ' + ${order.getNumber()}"></a>
+    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+    <p th:text="'Состав заказа: ' + ${order.getProduct().getTitle()}"></p>
+    <p style="color: #1960b1; font-weight: 500;" th:text="'Cтатус: ' + ${order.getStatus()}">
+    <hr style="width: 50%; float: left;">
+    <br>
+</div>
+</body>
+</html>

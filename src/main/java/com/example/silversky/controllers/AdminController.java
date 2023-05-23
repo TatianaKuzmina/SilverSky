@@ -1,9 +1,13 @@
 package com.example.silversky.controllers;
 
+import com.example.silversky.enumm.Status;
 import com.example.silversky.models.Category;
 import com.example.silversky.models.Image;
+import com.example.silversky.models.Order;
 import com.example.silversky.models.Product;
 import com.example.silversky.repositories.CategoryRepository;
+import com.example.silversky.repositories.OrderRepository;
+import com.example.silversky.services.OrderService;
 import com.example.silversky.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,14 +25,18 @@ import java.util.UUID;
 public class AdminController {
 
     private final ProductService productService;
+    private final OrderService orderService;
+    private final OrderRepository orderRepository;
 
     @Value("${upload.path}")
     private String uploadPath;
 
     private final CategoryRepository categoryRepository;
 
-    public AdminController(ProductService productService, CategoryRepository categoryRepository) {
+    public AdminController(ProductService productService, OrderService orderService, OrderRepository orderRepository, CategoryRepository categoryRepository) {
         this.productService = productService;
+        this.orderService = orderService;
+        this.orderRepository = orderRepository;
         this.categoryRepository = categoryRepository;
     }
 
@@ -154,4 +162,36 @@ public class AdminController {
         productService.updateProduct(id, product);
         return "redirect:/admin";
     }
+    //Отображение страницы со всеми заказами
+    @GetMapping("/allOrders")
+    public String allOrders(Model model){
+        model.addAttribute("orders", orderService.getAllOrders());
+        return "/allOrders";
+    }
+    //Поиск заказов по последним символам
+    @PostMapping("/allOrders/search")
+    public String orderSearch(@RequestParam("search") String search, Model model){
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("search_order", orderRepository.findOrderByPartOfNumber(search));
+        model.addAttribute("value_search", search);
+        return "/allOrders";
+    }
+    //Подробная информация о заказе и изменение его статуса
+    @GetMapping("/allOrders/{id}")
+    public String orderInfo(@PathVariable("id") int id, Model model) {
+        model.addAttribute("order", orderService.getOrderById(id));
+        model.addAttribute("status", Status.values());
+        return "/orderInfo";
+    }
+    //Изменение статуса заказа на странице с заказами
+    @PostMapping("/allOrders/{id}")
+    public String ChangeOrderStatus(@ModelAttribute("status") Status status,
+                                    @PathVariable("id") int id)
+    {
+        Order order = orderService.getOrderById(id); //получаем объект заказа из БД
+        order.setStatus(status); //меняем статус на выбранный в селекте
+        orderService.updateOrder(id, order); //обновляем данные заказа в БД
+        return "redirect:/allOrders/{id}";
+    }
+
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробная информация о заказе</title>
+  <link href="/image/logo2.jpg" rel="icon">
+  <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link th:href="@{/css/allOrders.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<a href="/allOrders">Назад к списку заказов</a>
+<hr>
+<br>
+<h3>Подробная информация о заказе: </h3>
+<form th:method="post" th:action="@{/allOrders/{id}(id=${order.getId()})}" th:object="${order}">
+  <p th:text="'Номер заказа: ' + ${order.getNumber()}"></p>
+  <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+  <p th:text="'Состав заказа: ' + ${order.getProduct().getTitle()}"></p>
+  <p th:text="'Стоимость: ' + ${order.getPrice()}"></p>
+  <p th:text="'Логин покупателя: ' + ${order.getPerson().getLogin()}"></p>
+  <p th:text="'ID покупателя: ' + ${order.getPerson().getId()}"></p>
+  <p th:text="'Статус заказа: ' + ${order.getStatus()}"></p>
+  <label for="status">Изменить статус заказа: </label>
+  <select name="status" th:field="*{status}" id="status">
+    <div th:each="orderStatus: ${status}">
+      <option th:text="${orderStatus}" th:value="${orderStatus}"></option>
+    </div>
+  </select>
+  <input type="submit" value="Изменить статус">
+</form>
+</body>
+</html>

@@ -64,8 +64,7 @@ fieldset input {
     border-radius: 5px;
     border-color: grey;
     background-color: #17a3f92b;
-    height: 30px;
-}
+    }
 fieldset input[type="submit"]{
     width: 200px;
     height: 35px;

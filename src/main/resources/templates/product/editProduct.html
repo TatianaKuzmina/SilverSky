@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактирование товара</title>
+    <link href="/image/logo2.jpg" rel="icon">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/editProduct.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
+<div class="main">
 <h3>Редактирование товара</h3>
 <form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${product.getId()})}" th:object="${product}" enctype="multipart/form-data">
     <label for="title">Введите наименование товара: </label>
@@ -42,6 +49,8 @@
     <br>
     <br>
     <input type="submit" value="Редактировать">
+
 </form>
+</div>
 </body>
 </html>

@@ -11,6 +11,7 @@ body{
 h3{
     color: #252728;
     text-align: center;
+    font-size: 22px !important;
 }
 
 .icon{
@@ -20,6 +21,10 @@ h3{
     padding-right: 40px;
 }
 .icon a{
+    color: black;
+    transition: 0.5s;
+}
+.icon p{
     color: black;
     text-decoration: none;
     font-size: 12px;
@@ -34,9 +39,24 @@ h3{
     justify-content: center;
     align-items: center;
 }
+.banner img{
+    height: 270px;
+    border-radius: 10px;
+    opacity: 0.6;
+    box-shadow: grey 10px 10px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.carousel-item img{
+    height: 485px;
+    width: 485px;
+    border-radius: 10px;
+    opacity: 0.6;
+    box-shadow: grey 10px 10px 10px;
+}
 
 .main{
-    margin: 50px;
+    margin: 20px 45px 10px 45px;
 }
 .contain{
     text-align: center;
@@ -48,24 +68,36 @@ h3{
 }
 .contain h2 {
     font-weight: 300;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
+    font-size: 26px !important;
+    margin-bottom: 35px;
 }
 legend{
     font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 fieldset{
+    text-align: center;
     border-radius: 10px;
     box-shadow: grey 10px 10px 20px;
     margin: 20px;
     padding: 23px;
     font-size: 14px;
 }
+fieldset p{
+    margin: 10px !important;
+    font-weight: 500;
+}
+fieldset label{
+    margin: 10px !important;
+    font-weight: 500;
+}
 fieldset input {
     border-radius: 5px;
     border-color: grey;
     background-color: #17a3f92b;
-    height: 30px;
-}
+    }
 fieldset input[type="submit"]{
     width: 200px;
     height: 35px;
@@ -94,7 +126,7 @@ fieldset input[type="submit"]:hover{
     justify-items: center;
     gap: 20px;
 }
-.card{
+.my-card{
     border: #605c5c solid 1px;
     box-shadow: grey 10px 10px 10px;
     border-radius: 10px;
@@ -107,19 +139,19 @@ fieldset input[type="submit"]:hover{
     justify-content: space-between;
     align-items: center;
 }
-.card a{
+.my-card a{
     text-decoration: none;
     color: black;
     font-weight: 600;
     transition: 1s;
 }
-.card a:hover{
+.my-card a:hover{
     color: white;
 }
-.card p{
+.my-card p{
     color: black;
 }
-.card img{
+.my-card img{
     border-radius: 10px;
     box-shadow: grey 10px 10px 10px;
     margin: 10px;

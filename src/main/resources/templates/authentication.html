@@ -6,17 +6,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
     <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
     <link th:href="@{/css/authentication.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="main">
+    <div class="home">
+        <a th:href="@{/product}">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
 <h3>Приветствуем Вас на сайте авторских ювелирных украшений из серебра Silver Sky Jewelry </h3>
-<div>
-    <img src="/image/boho2.jpg">
-    <img src="/image/neckles2.jpg">
-    <img src="/image/rings1.jpg">
-</div>    
+    </div>
 <fieldset>
 <h4>Авторизация</h4>
 <form method="post" action="/process_login">
@@ -40,6 +41,13 @@
 <a href="/registration">Зарегистрироваться</a>
 </div>
 </fieldset>
+
+    <div>
+        <img src="/image/boho2.jpg">
+        <img src="/image/neckles2.jpg">
+        <img src="/image/rings1.jpg">
+    </div>
+
 </div>
 </body>
 </html>

@@ -9,11 +9,18 @@ body{
 }
 h3{
     color: #252728;
+    padding-right: 5%;
+    letter-spacing: 2px;
 }
 .main{
-    margin: 50px;
+    margin: 20px 45px 10px 45px;
     text-align: center;
 
+}
+.home{
+    display: grid;
+    grid-template-columns: 5% 1fr;
+    align-items: center;
 }
 img{
     height: 300px;

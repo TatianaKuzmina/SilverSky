@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавление товара</title>
+    <link href="/image/logo2.jpg" rel="icon">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/editProduct.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
+<div class="main">
 <h3>Добавление товара</h3>
 <form th:method="POST" th:action="@{/admin/product/add}" th:object="${product}" enctype="multipart/form-data">
     <label for="title">Введите наименование товара: </label>
@@ -41,15 +48,18 @@
     <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
     <br>
     <br>
-    <p style="color: red">Вы можете добавить до 5 фотографий. Первая фотография не может быть пустой т.к она будет являтся главной при выводе карточки товара</p>
+    <p style="color: red; font-size: 14px">Вы можете добавить до 5 фотографий. Первая фотография не может быть пустой т.к она будет являтся главной при выводе карточки товара</p>
+    <div class="add">
     <input type="file" name="file_one">
     <input type="file" name="file_two">
     <input type="file" name="file_three">
     <input type="file" name="file_four">
     <input type="file" name="file_five">
+</div>
     <br>
     <br>
     <input type="submit" value="Добавить">
 </form>
+</div>
 </body>
 </html>

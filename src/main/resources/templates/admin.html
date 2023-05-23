@@ -20,7 +20,17 @@
 <div class="bnt">
 <a href="admin/product/add">Добавить товар</a>
 </div>
+    <br>
+
+    <form method="get" th:action="@{/allOrders}">
+        <button type="submit" style="height: 55px">
+            Просмотреть все заказы пользователей
+        </button>
+    </form>
+
 </div>
+<hr>
+<h3>Список товаров</h3>
 <hr>
 <div th:each="product : ${products}">
     <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
@@ -29,13 +39,18 @@
     <p th:text="'Магазин: ' + ${product.getWarehouse()}"></p>
     <p th:text="'Коллекция: ' + ${product.getSeller()}"></p>
     <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+    <div class="result">
+    <div th:each="img : ${product.getImageList()}">
+        <img width="200px" th:src="'/img/' + ${img.getFileName()}">
+    </div>
+    </div>
     <div class="group">
     <div class="bnt">
-    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактирование товара</a>
+    <a th:href="@{admin/product/edit/{id}(id=${product.getId()})}">Редактирование товара</a>
     </div>
 <br>
     <div class="bnt">
-    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
+    <a th:href="@{admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
     </div>
     </div>
     <hr>
