@@ -21,10 +21,15 @@
 <a href="admin/product/add">Добавить товар</a>
 </div>
     <br>
-
     <form method="get" th:action="@{/allOrders}">
         <button type="submit" style="height: 55px">
             Просмотреть все заказы пользователей
+        </button>
+    </form>
+    <br>
+    <form method="get" th:action="@{/allUsers}">
+        <button type="submit" style="height: 55px">
+            Просмотреть всех пользователей
         </button>
     </form>
 

@@ -1,13 +1,12 @@
 package com.example.silversky.controllers;
 
+import com.example.silversky.enumm.Role;
 import com.example.silversky.enumm.Status;
-import com.example.silversky.models.Category;
-import com.example.silversky.models.Image;
-import com.example.silversky.models.Order;
-import com.example.silversky.models.Product;
+import com.example.silversky.models.*;
 import com.example.silversky.repositories.CategoryRepository;
 import com.example.silversky.repositories.OrderRepository;
 import com.example.silversky.services.OrderService;
+import com.example.silversky.services.PersonService;
 import com.example.silversky.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,16 +26,18 @@ public class AdminController {
     private final ProductService productService;
     private final OrderService orderService;
     private final OrderRepository orderRepository;
+    private final PersonService personService;
 
     @Value("${upload.path}")
     private String uploadPath;
 
     private final CategoryRepository categoryRepository;
 
-    public AdminController(ProductService productService, OrderService orderService, OrderRepository orderRepository, CategoryRepository categoryRepository) {
+    public AdminController(ProductService productService, OrderService orderService, OrderRepository orderRepository, PersonService personService, CategoryRepository categoryRepository) {
         this.productService = productService;
         this.orderService = orderService;
         this.orderRepository = orderRepository;
+        this.personService = personService;
         this.categoryRepository = categoryRepository;
     }
 
@@ -188,10 +189,32 @@ public class AdminController {
     public String ChangeOrderStatus(@ModelAttribute("status") Status status,
                                     @PathVariable("id") int id)
     {
-        Order order = orderService.getOrderById(id); //получаем объект заказа из БД
-        order.setStatus(status); //меняем статус на выбранный в селекте
-        orderService.updateOrder(id, order); //обновляем данные заказа в БД
+        Order order = orderService.getOrderById(id);
+        order.setStatus(status);
+        orderService.updateOrder(id, order);
         return "redirect:/allOrders/{id}";
+    }
+    //Просмотр страницы со всеми пользователями
+    @GetMapping("/allUsers")
+    public String showAllUsers(Model model) {
+        model.addAttribute("users", personService.findAllUsers());
+        model.addAttribute("role", Role.values());
+        return "/allUsers";
+    }
+    //ПОдробная информация о выбранном пользователе
+    @GetMapping("/allUsers/{id}")
+    public String userInfo(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", personService.findById(id));
+        model.addAttribute("role", Role.values());
+        return "/userInfo";
+    }
+
+    @PostMapping("/allUsers/{id}")
+    public String setUserRole (@ModelAttribute("role") String role, @PathVariable("id") int id){
+        Person person = personService.findById(id);
+        person.setRole(role);
+        personService.updatePerson(id, person);
+        return "redirect:/allUsers/{id}";
     }
 
 }

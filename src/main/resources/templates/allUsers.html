@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр пользователей</title>
+    <link href="/image/logo2.jpg" rel="icon">
+    <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/allOrders.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<br>
+<a href="/admin">Вернуться в личный кабинет</a>
+<br>
+<br>
+<hr>
+<h3>Список всех пользователей</h3>
+<hr style="width: 50%; float: left;">
+<br>
+<div th:each="user : ${users}">
+    Логин пользователя: <a th:href="@{/allUsers/{id}(id=${user.getId()})}" th:text="${user.getLogin()}"></a>
+    <p th:text="'Роль пользователя: ' + ${user.getRole}"></p>
+    <hr style="width: 50%; float: left;">
+    <br>
+</div>
+</body>
+</html>

@@ -11,6 +11,11 @@
     <link th:href="@{/css/allOrders.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
+<br>
+<a href="/admin">Вернуться в личный кабинет</a>
+<br>
+<br>
+<hr>
 <h3>Поиск заказов</h3>
 <form th:method="POST" th:action="@{/allOrders/search}">
     <label for="search">Поиск по последним 4-м символам номера заказа</label>
@@ -28,7 +33,7 @@
 
 <hr>
 <br>
-<h3>Список всех заказов заказов</h3>
+<h3>Список всех заказов</h3>
 <hr style="width: 50%; float: left;">
 <br>
 <div th:each="order : ${orders}">
