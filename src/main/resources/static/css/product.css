@@ -136,8 +136,8 @@ fieldset input[type="submit"]:hover{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 .my-card a{
     text-decoration: none;
@@ -150,6 +150,8 @@ fieldset input[type="submit"]:hover{
 }
 .my-card p{
     color: black;
+    margin-bottom: 0;
+    margin-top: 10px;
 }
 .my-card img{
     border-radius: 10px;
@@ -230,4 +232,17 @@ fieldset input[type="submit"]:hover{
     z-index: 2;
     padding: 20px;
     margin-left: -60px;
+}
+.card.card-body{
+    background: #b9bdc1;
+    width: 25%;
+    margin-left: 48%;
+    height: 130px;
+}
+.card.card-body a{
+    text-decoration: none;
+    color: #0c7cc9;
+}
+.card.card-body a:hover{
+    color: white;
 }

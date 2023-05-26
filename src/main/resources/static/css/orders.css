@@ -73,24 +73,13 @@ a{
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    letter-spacing: 3px;
     color: black;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 a:hover{
     color: white;
 }
-.registration{
-    width: 250px;
-    height: 35px;
-    border: silver solid 1px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    background-color: #17a3f92b;
-    box-shadow: gray 10px 10px 11px;
-    border-radius: 5px;
-}
+
 

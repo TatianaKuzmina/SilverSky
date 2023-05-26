@@ -25,10 +25,15 @@
 </form>
 <hr>
 <h3>Результат поиска:</h3>
+<hr style="width: 50%; float: left;">
+<br>
 <div th:each="order: ${search_order}">
     <a th:href="@{/allOrders/{id}(id=${order.getId()})}" th:text="${order.getNumber()}"></a>
+    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
     <p th:text="'Состав заказа: ' + ${order.getProduct().getTitle()}"></p>
-    <hr>
+    <p style="color: #507bad; font-weight: 500;" th:text="'Cтатус: ' + ${order.getStatus()}">
+    <hr style="width: 50%; float: left;">
+    <br>
 </div>
 
 <hr>
@@ -40,7 +45,7 @@
     <a th:href="@{/allOrders/{id}(id=${order.getId()})}" th:text="'Номер заказа: ' + ${order.getNumber()}"></a>
     <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
     <p th:text="'Состав заказа: ' + ${order.getProduct().getTitle()}"></p>
-    <p style="color: #1960b1; font-weight: 500;" th:text="'Cтатус: ' + ${order.getStatus()}">
+    <p style="color: #507bad; font-weight: 500;" th:text="'Cтатус: ' + ${order.getStatus()}">
     <hr style="width: 50%; float: left;">
     <br>
 </div>

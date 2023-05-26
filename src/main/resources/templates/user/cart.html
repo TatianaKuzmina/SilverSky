@@ -11,6 +11,11 @@
     <link th:href="@{/css/cart.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
+<br>
+<a href="/person account">Вернуться в личный кабинет</a>
+<br>
+<br>
+<hr>
 <h2>Корзина товаров</h2>
 <div class="result">
 <div class="card" th:each="product : ${cart_product}">
@@ -24,7 +29,9 @@
 </div>
 <h3 th:text="'Итоговая цена: ' + ${price}"></h3>
 <div class="registration">
+<div class="registration">
 <a href="/order/create">Оформить заказ</a>
+</div>
 </div>
 </body>
 </html>

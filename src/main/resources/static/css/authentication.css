@@ -25,6 +25,7 @@ h4{
     display: grid;
     grid-template-columns: 5% 1fr;
     align-items: center;
+    justify-items: center;
 }
 img{
     height: 270px;
@@ -91,4 +92,25 @@ hr{
     opacity: 0.5;
     border-width: 2px;
     width: 500px;
+}
+
+.password {
+    position: relative;
+}
+.password-control {
+    position: absolute;
+    top: 13px;
+    right: 41%;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    background-image: url(no-eye.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    opacity: 70%;
+}
+.password-control.view {
+    background-image: url(eye.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
 }

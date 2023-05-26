@@ -24,7 +24,7 @@ public class Person {
 
     @NotEmpty(message = "Пароль не может быть пустым")
     @Size(min = 5, max = 100, message = "Пароль должен быть более 5 символов")
-    @Pattern(regexp = "[0-1]", message = "В пароле обязятельно дожна быть хотя бы одна цифра")
+    @Pattern(regexp = ".*[0-9].*", message = "В пароле обязятельно дожна быть хотя бы одна цифра")
     @Column(name = "password")
     private String password;
 

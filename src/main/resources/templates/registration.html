@@ -15,7 +15,7 @@
     <a th:href="@{/product}">
     <i class="fa fa-home" aria-hidden="true"></i>
     </a>
-<h3>Регистрация</h3>
+<h2>Регистрация</h2>
     </div>
 <fieldset>
 <form method="post" th:actioin="@{/registration}" th:object="${person}">
@@ -27,7 +27,10 @@
     <br>
     <label for="password">Введите пароль: </label>
     <br>
-    <input type="password" th:field="*{password}" id="password">
+    <div class="password">
+    <input type="password" th:field="*{password}" id="password" name="password">
+        <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+    </div>
     <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
     <br>
     <input type="submit" value="Зарегистрироваться">
@@ -38,5 +41,19 @@
         <img src="/image/boho4.jpg">
     </div>
 </div>
+
+<script>
+    function show_hide_password(target){
+        var input = document.getElementById('password');
+        if (input.getAttribute('type') === 'password') {
+            target.classList.add('view');
+            input.setAttribute('type', 'text');
+        } else {
+            target.classList.remove('view');
+            input.setAttribute('type', 'password');
+        }
+        return false;
+    }
+</script>
 </body>
 </html>

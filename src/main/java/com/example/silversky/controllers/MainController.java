@@ -236,7 +236,11 @@ public class MainController {
         return "/user/orders";
     }
 
+    @GetMapping("/map")
+    public String showMap() {
 
+        return "/map";
+    }
 
 
 }

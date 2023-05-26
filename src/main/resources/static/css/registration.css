@@ -7,10 +7,10 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
-h3{
+h2{
     color: #252728;
     padding-right: 5%;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 .main{
     margin: 20px 45px 10px 45px;
@@ -50,7 +50,7 @@ fieldset input[type="submit"]{
     height: 35px;
     font-weight: 600;
     font-size: 16px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     background-color: #17a3f92b;
     border-color: silver;
     box-shadow: gray 10px 10px 11px;
@@ -66,7 +66,7 @@ a{
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     color: black;
 }
 .registration{
@@ -85,4 +85,25 @@ a{
 }
 a:hover{
     color: white;
+}
+
+.password {
+    position: relative;
+}
+.password-control {
+    position: absolute;
+    top: 10px;
+    right: 41%;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    background-image: url(no-eye.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    opacity: 70%;
+}
+.password-control.view {
+    background-image: url(eye.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
 }

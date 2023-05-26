@@ -74,7 +74,7 @@
 <div class="card" th:each="product : ${search_product}">
     <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="200px">
     <br>
-    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <a th:href="@{/person account/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <a th:href="@{/cart/add/{id}(id=${product.getId()})}">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -90,7 +90,7 @@
 <div class="card" th:each="product : ${products}">
     <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="200px">
     <br>
-    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <a th:href="@{/person account/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <a th:href="@{/cart/add/{id}(id=${product.getId()})}">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>

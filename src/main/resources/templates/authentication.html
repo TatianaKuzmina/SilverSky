@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cdf18c93d7.js" crossorigin="anonymous"></script>
+    <link href="/image/logo2.jpg" rel="icon">
     <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
     <link th:href="@{/css/authentication.css}" type="text/css" rel="stylesheet">
 </head>
@@ -28,7 +29,10 @@
     <br>
     <label for="password">Введите пароль: </label>
     <br>
-    <input type="password" placeholder="Введите пароль" name="password" id="password">
+    <div class="password">
+        <input type="password" placeholder="Введите пароль" name="password" id="password">
+         <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+    </div>
 <br>
     <input type="submit" value="Войти">
 </form>
@@ -49,5 +53,20 @@
     </div>
 
 </div>
+
+<script>
+    function show_hide_password(target){
+        var input = document.getElementById('password');
+        if (input.getAttribute('type') === 'password') {
+            target.classList.add('view');
+            input.setAttribute('type', 'text');
+        } else {
+            target.classList.remove('view');
+            input.setAttribute('type', 'password');
+        }
+        return false;
+    }
+</script>
+
 </body>
 </html>

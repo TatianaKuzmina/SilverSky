@@ -29,12 +29,12 @@ public class SecurityConfig{
 //.csrf().disable() // отключаем защиту от межсайтовой подделки запросов
         http
                 .authorizeHttpRequests() // указываем что все страницы должны быть защищены аутентификацией
-                .requestMatchers("/admin/**").hasRole("ADMIN") // указываем на то что страница /admin доступна пользователю с ролью ADMIN
+                .requestMatchers("/admin/**", "/allOrders", "/allUsers").hasRole("ADMIN") // указываем на то что страница /admin доступна пользователю с ролью ADMIN
                 // указываем что не аутентифицированные пользователя могут зайти на страницу аутентификации и на объект ошибки
                 // c помощью permitAll указываем что не аутентифицированные пользователи могут заходить на перечисленные страницы
                 // указываем что для всех остальных страниц необходимо вызывать метод authenticated(), который открывает форму аутентификации
 //                .anyRequest().authenticated()
-                .requestMatchers("/authentication", "/registration", "/error", "/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/image/**", "/product", "/product/info/{id}", "/product/search").permitAll()
+                .requestMatchers("/authentication", "/registration", "/error", "/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/image/**", "/product", "/product/info/{id}", "/map", "/product/search").permitAll()
                 .anyRequest().hasAnyRole("USER", "ADMIN")
                 .and() // указываем что дальше настраиватеся аутентификация и соединяем ее с настройкой доступа
                 .formLogin().loginPage("/authentication") // указываем какой url запрос будет отправлятся при заходе на защищенные страницы
